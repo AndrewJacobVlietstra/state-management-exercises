@@ -1,5 +1,5 @@
 import classes from './Counter.module.css';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { incrementCounter, decrementCounter, toggleReduxCounter } from '../redux/reducers/counterSlice';
 import { counterContext } from '../context/counterContext';
@@ -19,8 +19,12 @@ const Counter = () => {
   };
 
   // Context counter state
-  const { contextCounter, setContextCounter } = useContext(counterContext);
-  console.log(contextCounter);
+  const { contextState, contextDispatch } = useContext(counterContext);
+
+  useEffect(() => {
+    contextDispatch({type: 'increment', payload: 10})
+  }, [])
+  
 
   return (
     <main className={classes.counter}>
@@ -36,22 +40,18 @@ const Counter = () => {
       : null}
       <button onClick={toggleCounterHandler}>Toggle Redux Counter</button>
 
-      <div className={classes.value}>
-        <h3 className={classes.localCounterTitle}>LOCAL COUNTER</h3>
-        <div className={classes.counterInfoContainer}>
-          <button className={classes.counterButton} onClick={ () => setLocalCounter(currentVal => currentVal - 1) }>-</button>
-          <h2 className={classes.counterCountValue}>{localCounter}</h2>
-          <button className={classes.counterButton} onClick={ () => setLocalCounter(currentVal => currentVal + 1) }>+</button>
-        </div>
+      <h3 className={classes.localCounterTitle}>LOCAL COUNTER</h3>
+      <div className={classes.counterInfoContainer}>
+        <button className={classes.counterButton} onClick={ () => setLocalCounter(currentVal => currentVal - 1) }>-</button>
+        <h2 className={classes.counterCountValue}>{localCounter}</h2>
+        <button className={classes.counterButton} onClick={ () => setLocalCounter(currentVal => currentVal + 1) }>+</button>
       </div>
 
-      <div className={classes.value}>
-        <h3 className={classes.localCounterTitle}>CONTEXT COUNTER</h3>
-        <div className={classes.counterInfoContainer}>
-          <button className={classes.counterButton} onClick={ () => setContextCounter(currentVal => currentVal - 1) }>-</button>
-          <h2 className={classes.counterCountValue}>{contextCounter}</h2>
-          <button className={classes.counterButton} onClick={ () => setContextCounter(currentVal => currentVal + 1) }>+</button>
-        </div>
+      <h3 className={classes.localCounterTitle}>CONTEXT COUNTER</h3>
+      <div className={classes.counterInfoContainer}>
+        <button className={classes.counterButton} onClick={ () => contextDispatch({ type: 'decrement', payload: 1 }) }>-</button>
+        <h2 className={classes.counterCountValue}>{contextState}</h2>
+        <button className={classes.counterButton} onClick={ () => contextDispatch({ type: 'increment', payload: 1 }) }>+</button>
       </div>
     </main>
   );
