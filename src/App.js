@@ -1,9 +1,12 @@
 import Counter from './components/Counter';
+import CounterContext from './context/counterContext';
 
 
 function App() {
   return (
-    <Counter />
+    <CounterContext>
+      <Counter />
+    </CounterContext>
   );
 }
 

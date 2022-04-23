@@ -21,3 +21,27 @@
   margin: 2rem 0;
   font-weight: bold;
 }
+
+.counterInfoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.counterButton {
+  padding: 0rem .7rem;
+  background-color: #333;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.counterCountValue {
+  margin: 1rem .5rem;
+}
+
+.localCounterTitle {
+  margin: 0;
+  margin-top: 3rem;
+}
