@@ -39,7 +39,7 @@ const Auth = () => {
       return handleInputError('Invalid Password! Password is 123', 5000);
     }
 
-    dispatch(userActions.logUserIn(inputState.email));
+    return dispatch(userActions.logUserIn(inputState.email));
   };
 
   return (

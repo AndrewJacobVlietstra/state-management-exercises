@@ -10,6 +10,9 @@ const userSlice = createSlice({
     logUserOut(state, action) {
       return {...state, userName: '', isLoggedIn: false};
     },
+    changeUserName(state, action) {
+      return {...state, userName: action.payload};
+    },
   }
 });
 
