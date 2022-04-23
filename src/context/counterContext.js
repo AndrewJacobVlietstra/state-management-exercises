@@ -10,6 +10,9 @@ const counterContextReducer = (state, action) => {
     case 'decrement':
       return state - action.payload;
 
+    case 'reset':
+      return 0;
+
     default:
       return state;
   }

@@ -21,9 +21,19 @@ const Counter = () => {
   // Context counter state
   const { contextState, contextDispatch } = useContext(counterContext);
 
+  const loopLocalCounterValueHandler = () => {
+    let timeDelay = 100;
+    for (let i = 0; i < 100; i++) {
+      setTimeout(() => {
+        setLocalCounter(state => state + 1);
+      }, timeDelay);
+      timeDelay += 6;
+    }
+  };
+
   useEffect(() => {
     contextDispatch({type: 'increment', payload: 10})
-  }, [])
+  }, []);
   
 
   return (
@@ -46,6 +56,7 @@ const Counter = () => {
         <h2 className={classes.counterCountValue}>{localCounter}</h2>
         <button className={classes.counterButton} onClick={ () => setLocalCounter(currentVal => currentVal + 1) }>+</button>
       </div>
+      <button onClick={loopLocalCounterValueHandler}>Activate Loop on Local Counter</button>
 
       <h3 className={classes.localCounterTitle}>CONTEXT COUNTER</h3>
       <div className={classes.counterInfoContainer}>
@@ -53,6 +64,7 @@ const Counter = () => {
         <h2 className={classes.counterCountValue}>{contextState}</h2>
         <button className={classes.counterButton} onClick={ () => contextDispatch({ type: 'increment', payload: 1 }) }>+</button>
       </div>
+      <button onClick={() => contextDispatch({type: 'reset'})}>Reset Context Counter</button>
     </main>
   );
 };
