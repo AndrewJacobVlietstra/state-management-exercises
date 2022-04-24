@@ -27,7 +27,7 @@ const Counter = () => {
       setTimeout(() => {
         setLocalCounter(state => state + 1);
       }, timeDelay);
-      timeDelay += 6;
+      timeDelay += 5;
     }
   };
 

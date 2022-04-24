@@ -5,14 +5,19 @@ import { userActions } from '../redux/reducers/userSlice';
 
 const Auth = () => {
 
+  // Grab the user slice and setup dispatch function
   const userState = useSelector(state => state.user);
   const dispatch = useDispatch();
 
+  // Setup error message ref and error state
   const errorMessageRef = useRef(null);
   const [inputError, setInputError] = useState(false);
 
+  // Initialize input state
   const [inputState, setInputState] = useState({email: '', password: ''});
 
+
+  // Dynamic inputchange handler
   const inputChangeHandler = (e) => {
     const { id, value } = e.target;
 
@@ -20,7 +25,9 @@ const Auth = () => {
   };
 
   const handleInputError = (errorMessage, errorTime) => {
-    if (typeof errorMessage !== 'string' || typeof errorTime !== 'number') { return console.log('Invalid Input type, message must be string, time must be number') }
+    if (typeof errorMessage !== 'string' || typeof errorTime !== 'number') { 
+      return console.log('Invalid Input type, message must be type string, time must be type number');
+    }
     errorMessageRef.current.innerText = errorMessage;
     setInputError(state => true);
 
