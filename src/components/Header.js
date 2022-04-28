@@ -1,7 +1,7 @@
 import classes from './Header.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { userActions } from '../redux/reducers/userSlice';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Header = () => {
   const userState = useSelector(state => state.user);
@@ -18,13 +18,13 @@ const Header = () => {
       <nav>
         <ul>
           <li>
-            <Link to='/'>Home</Link>
+            <NavLink to='/' activeClassName={classes.active} exact>Home</NavLink>
           </li>
           <li>
-            <Link to='/products'>My Products</Link>
+            <NavLink to='/products' activeClassName={classes.active}>My Products</NavLink>
           </li>
           <li>
-            <Link to='/sales'>My Sales</Link>
+            <NavLink to='/sales' activeClassName={classes.active}>My Sales</NavLink>
           </li>
           <li>
             <button onClick={handleLogUserOut}>Logout</button>

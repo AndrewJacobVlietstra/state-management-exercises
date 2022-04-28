@@ -27,6 +27,11 @@
   font-size: 1.25rem;
 }
 
+.active {
+  text-decoration: underline !important;
+  font-style: italic;
+}
+
 .header a:hover,
 .header a:active {
   color: #b864da;

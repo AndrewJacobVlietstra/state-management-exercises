@@ -3,7 +3,9 @@ import './pageStyles.css';
 
 const SalesPage = () => {
   return (
-    <div className='sales-page-container'>SalesPage Component</div>
+    <div className='sales-page-container'>
+      <h1>The Sales Page</h1>
+    </div>
   )
 }
 
