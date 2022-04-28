@@ -1,6 +1,7 @@
 import classes from './Header.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { userActions } from '../redux/reducers/userSlice';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const userState = useSelector(state => state.user);
@@ -17,10 +18,13 @@ const Header = () => {
       <nav>
         <ul>
           <li>
-            <a href='/'>My Products</a>
+            <Link to='/'>Home</Link>
           </li>
           <li>
-            <a href='/'>My Sales</a>
+            <Link to='/products'>My Products</Link>
+          </li>
+          <li>
+            <Link to='/sales'>My Sales</Link>
           </li>
           <li>
             <button onClick={handleLogUserOut}>Logout</button>

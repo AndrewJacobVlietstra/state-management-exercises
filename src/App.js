@@ -3,6 +3,9 @@ import Header from "./components/Header";
 import Auth from "./components/Auth";
 import UserProfile from "./components/UserProfile";
 import CounterContext from "./context/counterContext";
+import { Route, } from 'react-router-dom';
+import ProductsPage from "./pages/ProductsPage";
+import SalesPage from "./pages/SalesPage";
 
 import { useSelector } from "react-redux";
 
@@ -17,10 +20,20 @@ function App() {
 
       {userState.isLoggedIn ? (
         <>
-          <UserProfile />
-          <CounterContext>
-            <Counter />
-          </CounterContext>
+          <Route path="/" exact>
+            <UserProfile />
+            <CounterContext>
+              <Counter />
+            </CounterContext>
+          </Route>
+
+          <Route path="/products" exact>
+            <ProductsPage />
+          </Route>
+
+          <Route path="/sales" exact>
+            <SalesPage />
+          </Route>
         </>
       ) : null}
     </>

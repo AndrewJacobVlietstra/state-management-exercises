@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import classes from './Auth.module.css';
 import { userActions } from '../redux/reducers/userSlice';
